@@ -11,10 +11,9 @@ const theme = createMuiTheme({
       fontSize: 26,
       marginTop: 20,
       fontWeight: 500
-
     },
     body2: {
-      color: "grey"
+      color: 'grey'
     }
   },
   palette: {
@@ -46,6 +45,5 @@ const theme = createMuiTheme({
     }
   }
 })
-
 
 export default theme

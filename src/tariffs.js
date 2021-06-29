@@ -1,13 +1,9 @@
-var prices = Object.freeze({
-  DaysOnYear: 365,
-  Power1: 31.949,
-  Power2: 2.701,
-  Energy1: 0.224,
-  Energy2: 0.127,
-  Energy3: 0.084,
-  Meter: 0.02663,
-  VAT: 0.21,
-  IEE: 0.0511269
-})
-
-export default prices
+export const DaysOnYear = 365
+export const Power1 = 31.949
+export const Power2 = 2.701
+export const Energy1 = 0.224
+export const Energy2 = 0.127
+export const Energy3 = 0.084
+export const Meter = 0.02663
+export const VAT = 0.21
+export const IEE = 0.0511269
