@@ -102,6 +102,9 @@ export default function TariffSimulation({
         <Divider />
 
         <Typography variant="h3">Total: {totalPrice} €</Typography>
+
+        <br />
+        <Typography variant="body2">Precios válidos entre el 1 de junio y el 31 de diciembre de 2021 para peaje 2.0TD (potencias contratadas inferiores a 15 kW), el habitual en viviendas y pequeños negocios.</Typography>
       </Paper>
     </div>
   )

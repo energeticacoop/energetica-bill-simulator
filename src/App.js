@@ -9,7 +9,8 @@ import {
   TextField,
   Container,
   InputAdornment,
-  Grid
+  Grid,
+  Box
 } from '@material-ui/core'
 
 import { ThemeProvider } from '@material-ui/core/styles'
@@ -48,7 +49,7 @@ const App = () => {
       energy3: ''
     },
     validationSchema: validationSchema,
-    onSubmit: values => {}
+    onSubmit: values => { }
   })
 
   return (
@@ -208,13 +209,15 @@ const App = () => {
                 </Grid>
               </form>
             </Grid>
-            {formik.submitCount > 0 && formik.isValid ? (
-              <Grid item xs={12} lg={6}>
-                <Grid container className="priceSimulation">
+
+            <Grid item xs={12} lg={6}  >
+
+              <Grid container className="priceSimulation">
+                <Box visibility={formik.submitCount > 0 && formik.isValid ? "visible" : "hidden"}>
                   <TariffSimulation {...formik.values} />
-                </Grid>
+                </Box>
               </Grid>
-            ) : null}
+            </Grid>
           </Grid>
         </Container>
       </ThemeProvider>
