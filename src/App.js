@@ -56,13 +56,14 @@ const App = () => {
     <div>
       <ThemeProvider theme={theme}>
         <Container maxWidth="lg">
-          {/* <Typography variant="h1">Simulador de Tarifa 2.0TD</Typography> */}
+
           <Grid container spacing={6} alignItems="center">
             <Grid item xs={12} lg={6}>
               <form onSubmit={formik.handleSubmit}>
                 <Grid container spacing={2}>
                   <Grid item xs={12}>
                     <Grid container spacing={2}>
+                      <Typography variant="h2">Simulador de factura 2.0TD</Typography>
                       <Grid item xs={12}>
                         ¿A cuántos días corresponde tu factura?
                       </Grid>
