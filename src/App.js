@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-import { useFormik } from 'formik'
-import * as yup from 'yup'
+import { useFormik } from 'formik';
+import * as yup from 'yup';
 
 import {
   Button,
@@ -11,32 +11,39 @@ import {
   InputAdornment,
   Grid,
   Box
-} from '@material-ui/core'
+} from '@material-ui/core';
 
-import { ThemeProvider } from '@material-ui/core/styles'
-import NavigateNextIcon from '@material-ui/icons/NavigateNext'
-import theme from './themeConfig'
+import { ThemeProvider } from '@material-ui/core/styles';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import theme from './themeConfig';
 
-import TariffSimulation from './components/TariffSimulation'
+import TariffSimulation from './components/TariffSimulation';
 
-const defaultNumberValidationSchema = yup
-  .string()
-  .required('Campo requerido')
-  .trim()
-  .matches(/[0-9]+([.,][0-9]+)?$/, 'Formato incorrecto')
+const dayValidationSchema = yup
+  .number()
+  .positive('El número debe ser positivo')
+  .integer('El número debe ser entero')
+  .required('Campo requerido');
+const powerValidationSchema = yup
+  .number()
+  .positive('El número debe ser positivo')
+  .transform((_value, originalValue) => Number(originalValue.replace(/,/, '.')))
+  .max(15, 'La potencia debe ser menor que 15 kW')
+  .required('Campo requerido');
+const energyNumberValidationSchema = yup
+  .number()
+  .positive('El número debe ser positivo')
+  .transform((_value, originalValue) => Number(originalValue.replace(/,/, '.')))
+  .required('Campo requerido');
 
 const validationSchema = yup.object({
-  days: yup
-    .string()
-    .required('Campo requerido')
-    .trim()
-    .matches(/^\d+$/, 'Formato incorrecto'),
-  power1: defaultNumberValidationSchema,
-  power2: defaultNumberValidationSchema,
-  energy1: defaultNumberValidationSchema,
-  energy2: defaultNumberValidationSchema,
-  energy3: defaultNumberValidationSchema
-})
+  days: dayValidationSchema,
+  power1: powerValidationSchema,
+  power2: powerValidationSchema,
+  energy1: energyNumberValidationSchema,
+  energy2: energyNumberValidationSchema,
+  energy3: energyNumberValidationSchema
+});
 
 const App = () => {
   const formik = useFormik({
@@ -49,8 +56,8 @@ const App = () => {
       energy3: ''
     },
     validationSchema: validationSchema,
-    onSubmit: values => { }
-  })
+    onSubmit: values => {}
+  });
 
   return (
     <div>
@@ -210,10 +217,15 @@ const App = () => {
               </form>
             </Grid>
 
-            <Grid item xs={12} lg={6}  >
-
+            <Grid item xs={12} lg={6}>
               <Grid container className="priceSimulation">
-                <Box visibility={formik.submitCount > 0 && formik.isValid ? "visible" : "hidden"}>
+                <Box
+                  visibility={
+                    formik.submitCount > 0 && formik.isValid
+                      ? 'visible'
+                      : 'hidden'
+                  }
+                >
                   <TariffSimulation {...formik.values} />
                 </Box>
               </Grid>
@@ -222,7 +234,7 @@ const App = () => {
         </Container>
       </ThemeProvider>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
