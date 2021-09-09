@@ -1,9 +1,9 @@
 export const DaysOnYear = 365
 export const Power1 = 31.949
 export const Power2 = 2.701
-export const Energy1 = 0.224
-export const Energy2 = 0.127
-export const Energy3 = 0.084
+export const Energy1 = 0.245
+export const Energy2 = 0.146
+export const Energy3 = 0.101
 export const Meter = 0.02663
-export const VAT = 0.21
+export const VAT = 0.10
 export const IEE = 0.0511269
